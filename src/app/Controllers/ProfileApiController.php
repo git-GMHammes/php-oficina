@@ -1,0 +1,99 @@
+<?php
+
+namespace App\Controllers;
+
+use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
+use App\Models\VMenuProfileModel;
+use Exception;
+
+class ProfileApiController extends ResourceController
+{
+    use ResponseTrait;
+    private $ModelProfileMenu;
+    private $uri;
+    //private $template = 'template/main.php';
+
+    public function __construct()
+    {
+        $this->ModelProfileMenu = new VMenuProfileModel();
+        $this->uri = new \CodeIgniter\HTTP\URI(current_url());
+        helper([
+            'myPrint'
+        ]);
+        return NULL;
+    }
+
+    # route POST /www/sigla/rota
+    # route GET /www/sigla/rota
+    # Informação sobre o controller
+    # retorno do controller [JSON]
+    public function index($parameter = NULL)
+    {
+        try {
+            exit('403 Forbidden');
+            $apiRespond = [
+                'http' => array(
+                    'header'  => 'Content-type: application/x-www-form-urlencoded',
+                    'method'  => 'GET/POST',
+                ),
+                'message' => 'API loading data (dados para carregamento da API)',
+                'date' => date('Y-m-d'),
+                // 'method' => '__METHOD__',
+                // 'function' => '__FUNCTION__',
+                'page_title' => 'TITLE PAGE',
+                'getURI' => $this->uri->getSegments(),
+                'result' => array()
+            ];
+            $response = $this->response->setJSON($apiRespond, 201);
+        } catch (\Exception $e) {
+            $apiRespond = array(
+                'message' => array('danger' => $e->getMessage()),
+                'page_title' => 'TITLE PAGE',
+            );
+            $response = $this->response->setJSON($apiRespond, 404);
+        }
+        return $response;
+    }
+
+    # route POST /www/saotiago/profile/api/read
+    # route GET /www/saotiago/profile/api/read(:any)
+    # Informação sobre o controller
+    # retorno do controller [JSON]
+    public function read($parameter = NULL)
+    {
+        $request = service('request');
+        $processRequest = (array)$request->getVar();
+        // myPrint($parameter, 'app\Controllers\ProfileApiController.php, 67', true);
+        try {
+            if (isset($processRequest['slug_profile'])) {
+                $parameter = $processRequest['slug_profile'];
+            } elseif ($parameter !== NULL) {
+                $parameter = $parameter;
+            } else {
+                $parameter = 'unknown';
+            };
+            $dbResponse['menu_profile'] = $this->ModelProfileMenu->dBread('id_slug_profile', $parameter)->orderBy('menu_order', 'ASC')->findAll();
+            $apiRespond = [
+                'http' => array(
+                    'header'  => 'Content-type: application/x-www-form-urlencoded',
+                    'method'  => 'GET/POST',
+                ),
+                'message' => 'API loading data (dados para carregamento da API)',
+                'date' => date('Y-m-d'),
+                // 'method' => '__METHOD__',
+                // 'function' => '__FUNCTION__',
+                'page_title' => 'TITLE PAGE',
+                'result' => $dbResponse,
+            ];
+            $response = $this->response->setJSON($apiRespond, 201);
+        } catch (\Exception $e) {
+            $apiRespond = array(
+                'message' => array('danger' => $e->getMessage()),
+                'page_title' => 'TITLE PAGE',
+            );
+            $response = $this->response->setJSON($apiRespond, 404);
+        }
+        return $response;
+    }
+}
