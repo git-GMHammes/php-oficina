@@ -24,3 +24,11 @@ src/public/writable/uploads/*
 src/public/writable/session/*
 src/public/writable/cache/*
 src/public/writable/logs/*
+# Os arquivos index.html devem subir no Push
+!src/public/writable/cache/index.html
+!src/public/writable/debugbar/index.html
+!src/public/writable/logs/index.html
+!src/public/writable/session/index.html
+!src/public/writable/uploads/index.html
+# O Arquivo que carrega o script do Banco de dados deve ser carregado
+!mysql-init/script.sql
