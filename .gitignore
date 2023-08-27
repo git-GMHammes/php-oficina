@@ -3,6 +3,7 @@
 *.sql
 *.log
 *.zip
+*.md
 # O enviroment não deve serguir para o controle de versões
 src/.env
 # Nenhum arquivo publico deve seguir ao controle de versões
@@ -32,3 +33,5 @@ src/public/writable/logs/*
 !src/public/writable/uploads/index.html
 # O Arquivo que carrega o script do Banco de dados deve ser carregado
 !mysql-init/script.sql
+# O Arquivo README.md deve subir
+!README.md
