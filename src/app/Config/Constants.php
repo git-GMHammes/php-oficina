@@ -137,16 +137,41 @@ $form_value = [
 defined('FORM_DEFAULT') or define('FORM_DEFAULT', $form_value);
 
 if (
-    $_SERVER['SERVER_NAME'] == 'localhost'
-    || $_SERVER['SERVER_NAME'] == '10.146.84.140'
-    || $_SERVER['SERVER_NAME'] == '10.146.84.177'
-) {
     # Ambiente Localhost
+    $_SERVER['SERVER_NAME'] == 'localhost'
+    && $_SERVER["SERVER_PORT"] == '80'
+) {
     defined('DATABASE_CONNECTION_DATA') or define('DATABASE_CONNECTION_DATA', "saotiago_localhost");
+} elseif (
+    # Ambiente 127.0.0.1
+    $_SERVER['SERVER_NAME'] == '127.0.0.1'
+    && $_SERVER["SERVER_PORT"] == '80'
+) {
+    defined('DATABASE_CONNECTION_DATA') or define('DATABASE_CONNECTION_DATA', "saotiago_habilidade");
+} elseif (
+    # Ambiente 10.146.84.140
+    $_SERVER['SERVER_NAME'] == '10.146.84.140'
+    && $_SERVER["SERVER_PORT"] == '80'
+) {
+    defined('DATABASE_CONNECTION_DATA') or define('DATABASE_CONNECTION_DATA', "saotiago_habilidade");
+} elseif (
+    # Ambiente 10.146.84.177
+    $_SERVER['SERVER_NAME'] == '10.146.84.177'
+    && $_SERVER["SERVER_PORT"] == '80'
+) {
+    defined('DATABASE_CONNECTION_DATA') or define('DATABASE_CONNECTION_DATA', "saotiago_habilidade");
+} elseif (
+    # Ambiente localhost
+    $_SERVER['SERVER_NAME'] == 'localhost'
+    && $_SERVER["SERVER_PORT"] == '8011'
+) {
+    defined('DATABASE_CONNECTION_DATA') or define('DATABASE_CONNECTION_DATA', "saotiago_container");
 } elseif (
     $_SERVER['SERVER_NAME'] == 'habilidade.com'
     || $_SERVER['SERVER_NAME'] == 'habilidade.com'
     || $_SERVER['SERVER_NAME'] == 'www.habilidade.com'
 ) {
     defined('DATABASE_CONNECTION_DATA') or define('DATABASE_CONNECTION_DATA', "saotiago_habilidade");
+} else {
+    exit('www\php-oficina\src\app\Config\Constants.php. Não foi possível encontrar o ambinete do sistema.');
 }

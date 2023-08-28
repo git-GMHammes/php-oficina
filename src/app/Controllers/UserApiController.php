@@ -217,7 +217,7 @@ class UserApiController extends ResourceController
         $processRequest = (array)$request->getVar();
         try {
             unset($processRequest['enviar']);
-            
+
             $logSystem = [
                 'user' => 'gmhammes',
                 'profile' => 'su',
@@ -251,7 +251,7 @@ class UserApiController extends ResourceController
                 'httponly' => true, // cookies não serão acessíveis através de scripts do lado do cliente
                 'samesite' => 'None' // os cookies serão enviados com requisições cross-site
             ]);
-            
+
             session()->set('informa_frase',  $frase);
             session()->markAsTempdata('informa_frase', 5);
 
@@ -305,7 +305,7 @@ class UserApiController extends ResourceController
             $message = session()->get('message');
             // myPrint($message, 'app\Controllers\UserApiController.php, 164');
         }
-        return redirect()->back();
+        return redirect()->to('saotiago/main/endpoint/home');
         return $response;
     }
 

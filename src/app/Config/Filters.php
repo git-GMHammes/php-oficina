@@ -66,7 +66,8 @@ class Filters extends BaseConfig
      */
     public array $filters = [
         'jwt' => ['before' => [
-            'saotiago/profile/api/read',
+            // 'saotiago/profile/api/read',
+            'menu',
         ]],
         'jwtcookie' => ['before' => [
             'saotiago/service/endpoint/create_os',

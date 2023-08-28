@@ -36,6 +36,25 @@ $routes->addRedirect('saotiago/logar', 'saotiago/user/endpoint/authenticate');
 $routes->addRedirect('saotiago/login', 'saotiago/user/endpoint/authenticate');
 
 $routes->group('saotiago', function ($routes) {
+    # www/saotiago/main/segment/(:any)
+    $routes->group('main', function ($routes) {
+        # www/saotiago/main/api/(:any)
+        $routes->group('api', function ($routes) {
+            # www/saotiago/main/api/__(:any)
+            $routes->get('__', 'Main_Controller::__');
+            $routes->get('__/(:segment)', 'Main_Controller::__/$1');
+            $routes->get('__/(:any)', 'Main_Controller::__/$1');
+            $routes->post('__', 'Main_Controller::__');
+        });
+        # www/saotiago/main/endpoint/(:any)
+        $routes->group('endpoint', function ($routes) {
+            # www/saotiago/main/endpoint/home(:any)
+            $routes->get('home', 'MainEndPointController::main');
+            $routes->get('home/(:segment)', 'MainEndPointController::main/$1');
+            $routes->get('home/(:any)', 'MainEndPointController::main/$1');
+            $routes->post('home', 'MainEndPointController::main');
+        });
+    });
     $routes->group('user', function ($routes) {
         $routes->group('api', function ($routes) {
             # www/saotiago/user/api/authenticate(:any)
