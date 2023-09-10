@@ -20,7 +20,7 @@ class JwtFilter implements FilterInterface
         require_once(APPPATH . 'Libraries/JWT/src/Key.php');
 
         $keys = [
-            "key1" => new \Firebase\JWT\Key(WEBTOKEN, 'HS256')
+            "key1" => new \Firebase\JWT\Key(D2B5A170764157EB93CFCBF66151A70C, 'HS256')
         ];
 
         $authHeader = $request->getServer('HTTP_AUTHORIZATION');

@@ -65,28 +65,29 @@ class ProfileApiController extends ResourceController
         $request = service('request');
         $processRequest = (array)$request->getVar();
         // myPrint($parameter, 'app\Controllers\ProfileApiController.php, 67', true);
+        if (isset($processRequest['slug_profile'])) {
+            $parameter = $processRequest['slug_profile'];
+        } elseif ($parameter !== NULL) {
+            $parameter = $parameter;
+        } else {
+            $parameter = 'unknown';
+        };
+        myPrint($parameter, 'src\app\Controllers\ProfileApiController.php, Line 75', true);
+        $dbResponse['menu_profile'] = $this->ModelProfileMenu->dBread('id_slug_profile', $parameter)->orderBy('menu_order', 'ASC')->findAll();
+        myPrint($dbResponse['menu_profile'], 'src\app\Controllers\ProfileApiController.php, Line 77', true);
+        $apiRespond = [
+            'http' => array(
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'method'  => 'GET/POST',
+            ),
+            'message' => 'API loading data (dados para carregamento da API)',
+            'date' => date('Y-m-d'),
+            // 'method' => '__METHOD__',
+            // 'function' => '__FUNCTION__',
+            'page_title' => 'Listar Perfis do Sistema',
+            'result' => $dbResponse,
+        ];
         try {
-            if (isset($processRequest['slug_profile'])) {
-                $parameter = $processRequest['slug_profile'];
-            } elseif ($parameter !== NULL) {
-                $parameter = $parameter;
-            } else {
-                $parameter = 'unknown';
-            };
-            $dbResponse['menu_profile'] = $this->ModelProfileMenu->dBread('id_slug_profile', $parameter)->orderBy('menu_order', 'ASC')->findAll();
-            myPrint($dbResponse['menu_profile'], 'src\app\Controllers\ProfileApiController.php, Line 77');
-            $apiRespond = [
-                'http' => array(
-                    'header'  => 'Content-type: application/x-www-form-urlencoded',
-                    'method'  => 'GET/POST',
-                ),
-                'message' => 'API loading data (dados para carregamento da API)',
-                'date' => date('Y-m-d'),
-                // 'method' => '__METHOD__',
-                // 'function' => '__FUNCTION__',
-                'page_title' => 'Listar Perfis do Sistema',
-                'result' => $dbResponse,
-            ];
             $response = $this->response->setJSON($apiRespond, 201);
         } catch (\Exception $e) {
             $apiRespond = array(

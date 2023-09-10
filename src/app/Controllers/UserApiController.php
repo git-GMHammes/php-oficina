@@ -211,13 +211,15 @@ class UserApiController extends ResourceController
         require_once(APPPATH . 'Libraries/JWT/src/ExpiredException.php');
         require_once(APPPATH . 'Libraries/JWT/src/SignatureInvalidException.php');
         require_once(APPPATH . 'Libraries/JWT/src/JWT.php');
-        $key = "0E7E2670DE06AF4A304DC92E38F11DA6"; // Lembre-se de manter esta chave segura!
+        $key = D2B5A170764157EB93CFCBF66151A70C; // Lembre-se de manter esta chave segura!
         $shelf_life = time() + (10 * 60 * 60); // 10 horas
         $request = service('request');
         $processRequest = (array)$request->getVar();
-        try {
+        myPrint($processRequest, 'src\app\Controllers\UserApiController.php', true);
+        if (isset($processRequest['enviar'])) {
             unset($processRequest['enviar']);
-
+        }
+        try {
             $logSystem = [
                 'user' => 'gmhammes',
                 'profile' => 'su',
@@ -255,19 +257,6 @@ class UserApiController extends ResourceController
             session()->set('informa_frase',  $frase);
             session()->markAsTempdata('informa_frase', 5);
 
-            if ($processRequest !== array()) {
-                # CRUD da Model
-                // $dbResponse[] = $this->ModelResponse->dBcreate($processRequest);
-                // $dbResponse[] = $this->ModelResponse->dBread($IdUFF = NULL);
-                // $dbResponse[] = $this->ModelResponse->dBupdate($IdUFF = NULL);
-                // $dbResponse[] = $this->ModelResponse->dBdelete($IdUFF = NULL);
-            } else {
-                # CRUD da Model
-                // $dbResponse[] = $this->ModelResponse->dBcreate($parameter);
-                // $dbResponse[] = $this->ModelResponse->dBread($parameter = NULL);
-                // $dbResponse[] = $this->ModelResponse->dBupdate($parameter = NULL);
-                // $dbResponse[] = $this->ModelResponse->dBdelete($parameter = NULL);
-            };
             $apiRespond = [
                 'http' => array(
                     'header'  => 'Content-type: application/x-www-form-urlencoded',
@@ -277,7 +266,7 @@ class UserApiController extends ResourceController
                 'date' => date('Y-m-d'),
                 // 'method' => '__METHOD__',
                 // 'function' => '__FUNCTION__',
-                'page_title' => 'TITLE PAGE',
+                'page_title' => 'Authenticate',
                 'result' => $apiSession,
             ];
             if ($parameter == 'json') {
@@ -288,7 +277,7 @@ class UserApiController extends ResourceController
         } catch (\Exception $e) {
             $apiRespond = array(
                 'message' => array('danger' => $e->getMessage()),
-                'page_title' => 'TITLE PAGE',
+                'page_title' => 'ERRO - Authenticate',
             );
             if ($parameter == 'json') {
                 $response = $this->response->setJSON($apiRespond, 404);
@@ -305,8 +294,11 @@ class UserApiController extends ResourceController
             $message = session()->get('message');
             // myPrint($message, 'app\Controllers\UserApiController.php, 164');
         }
-        return redirect()->to('saotiago/main/endpoint/home');
-        return $response;
+        if ($parameter !== 'json') {
+            return redirect()->to('saotiago/main/endpoint/home');
+        } else {
+            return $response;
+        }
     }
 
     public function show($id = null)
