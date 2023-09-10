@@ -67,18 +67,19 @@ class Filters extends BaseConfig
     public array $filters = [
         'jwt' => ['before' => [
             // 'saotiago/profile/api/read',
-            'menu',
+            'filter',
         ]],
         'jwtcookie' => ['before' => [
-            'saotiago/service/endpoint/create_os',
-            'saotiago/workorder/endpoint/create',
-            'saotiago/customer/endpoint/create',
-            'saotiago/emitente/endpoint/create',
-            'saotiago/service/endpoint/create',
-            'saotiago/cars/endpoint/create',
-            'saotiago/user/endpoint/create',
-            'saotiago/car/endpoint/create',
-            'saotiago/user/endpoint/access',
+            // 'saotiago/service/endpoint/create_os',
+            // 'saotiago/workorder/endpoint/create',
+            // 'saotiago/customer/endpoint/create',
+            // 'saotiago/emitente/endpoint/create',
+            // 'saotiago/service/endpoint/create',
+            // 'saotiago/cars/endpoint/create',
+            // 'saotiago/user/endpoint/create',
+            // 'saotiago/car/endpoint/create',
+            // 'saotiago/user/endpoint/access',
+            'filter',
         ]]
     ];
 }

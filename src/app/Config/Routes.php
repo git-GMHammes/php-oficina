@@ -31,6 +31,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+$routes->addRedirect('saothiago', 'saotiago/user/endpoint/authenticate');
 $routes->addRedirect('saotiago', 'saotiago/user/endpoint/authenticate');
 $routes->addRedirect('saotiago/logar', 'saotiago/user/endpoint/authenticate');
 $routes->addRedirect('saotiago/login', 'saotiago/user/endpoint/authenticate');

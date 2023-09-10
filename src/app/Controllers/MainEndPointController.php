@@ -37,7 +37,7 @@ class MainEndPointController extends ResourceController
             $profile = '/unknown';
         }
         $endPoint = myEndPoint('saotiago/profile/api/read' . $profile, $this->token);
-        myPrint($endPoint, 'C:\laragon\www\php-oficina\src\app\Controllers\MainEndPointController.php, linha: 40');
+        // myPrint($endPoint, 'C:\laragon\www\php-oficina\src\app\Controllers\MainEndPointController.php, linha: 40');
         $this->menu_profile = (isset($endPoint['result']['menu_profile'])) ? ($endPoint['result']['menu_profile']) : (array());
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
         service('request');

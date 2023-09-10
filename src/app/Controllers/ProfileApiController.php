@@ -74,6 +74,7 @@ class ProfileApiController extends ResourceController
                 $parameter = 'unknown';
             };
             $dbResponse['menu_profile'] = $this->ModelProfileMenu->dBread('id_slug_profile', $parameter)->orderBy('menu_order', 'ASC')->findAll();
+            myPrint($dbResponse['menu_profile'], 'src\app\Controllers\ProfileApiController.php, Line 77');
             $apiRespond = [
                 'http' => array(
                     'header'  => 'Content-type: application/x-www-form-urlencoded',
@@ -83,7 +84,7 @@ class ProfileApiController extends ResourceController
                 'date' => date('Y-m-d'),
                 // 'method' => '__METHOD__',
                 // 'function' => '__FUNCTION__',
-                'page_title' => 'TITLE PAGE',
+                'page_title' => 'Listar Perfis do Sistema',
                 'result' => $dbResponse,
             ];
             $response = $this->response->setJSON($apiRespond, 201);
