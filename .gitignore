@@ -6,6 +6,8 @@
 *.md
 # O enviroment não deve serguir para o controle de versões
 src/.env
+# Base de dados em desenvolvimento deve seguir ao controle de versões
+db-data/**
 # Nenhum arquivo publico deve seguir ao controle de versões
 src/public/conectabanco/**
 src/public/documentacao/**
