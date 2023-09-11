@@ -22,6 +22,7 @@ if (!function_exists('myEndPoint')) {
             $base = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER["SERVER_PORT"] . '/';
         }
         $uri = $base . $uri;
+        // myPrint($uri, 'src\app\Helpers\myEndPoint_helper.php');
         // Verificar se a URI é válida
         if (!filter_var($uri, FILTER_VALIDATE_URL)) {
             throw new \Exception('A URI fornecida é inválida.');
@@ -38,6 +39,7 @@ if (!function_exists('myEndPoint')) {
         }
 
         $result = curl_exec($ch);
+        // myPrint($result, 'src\app\Helpers\myEndPoint_helper.php');
         if ($result === false) {
             throw new \Exception('Curl error: ' . curl_error($ch));
         } else {
@@ -53,7 +55,6 @@ if (!function_exists('myEndPoint')) {
         } catch (\Exception $e) {
             return ["error" => $e->getMessage()];
         }
-
         return $requestJSONform;
     }
 }

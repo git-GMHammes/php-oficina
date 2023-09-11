@@ -29,21 +29,24 @@ $submit = [
                         <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmitente" aria-expanded="false" aria-controls="collapseEmitente">
                             <?= view('icon/arrows-expand', ['height' => '15px', 'width' => '15px']); ?>
                         </button>
+                        <a class="btn btn-outline-primary" href="#" role="button">Ordens de Serviço</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Listar Veículos</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Novo Veículo</a>
                     </div>
                 </div>
                 <div class="col-12 col-sm-4">
                     <h5 class="card-title">Cadastrar Empresa</h5>
                 </div>
                 <div class="col-12 col-sm-4">
-                    &nbsp;
+                    <div class="text-end">
+                        <a class="btn btn-outline-danger disabled" href="#" role="button">
+                            <span class="tempo"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center">
-                <button onclick="location.reload()" class="btn btn-outline-primary" type="submit">
-                    <div style="font-size: 2rem;">
-                        <span class="tempo"></span>
-                    </div>
-                </button>
+                &nbsp;
             </div>
             <?= view('saotiago/emitente/form_field') ?>
         </div>

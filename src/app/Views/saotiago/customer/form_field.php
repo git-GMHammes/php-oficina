@@ -356,7 +356,7 @@ $telefone = [
     'default' => FORM_DEFAULT['telephone'],
     'html_escape' => true,
     'escape' => true,
-    'Message_required_field' => 'Campo E-mail Obrigatório',
+    'Message_required_field' => 'Campo Telefone Obrigatório',
     'with_set' => true
 ];
 $celular_label = [
@@ -379,7 +379,7 @@ $celular = [
     'default' => FORM_DEFAULT['cellphone'],
     'html_escape' => true,
     'escape' => true,
-    'Message_required_field' => 'Campo E-mail Obrigatório',
+    'Message_required_field' => 'Campo Celular Obrigatório',
     'with_set' => true
 ];
 $contato_label = [
@@ -453,7 +453,7 @@ $data_registro = [
     'default' => FORM_DEFAULT['registrationdate'],
     'html_escape' => true,
     'escape' => true,
-    'Message_required_field' => 'Campo E-mail Obrigatório',
+    'Message_required_field' => 'Campo Data do Registro Obrigatório',
     'with_set' => true
 ];
 $expira_em_label = [
@@ -466,17 +466,26 @@ $expira_em_label = [
 $expira_em = [
     'data' => [
         'type' => 'date',
+        // 'type' => 'text',
+        // 'type' => 'hidden',
+        // 'type' => 'email',
+        // 'type' => 'number',
         'name' => 'expira_em',
         'id' => 'expira_em',
         'class' => 'form-control form-control-sm',
-        'maxlength' => '20',
+        'maxlength' => '100',
+        'placeholder' => 'Expira Em',
+        // 'min' => date('Y-m-d'),
+        // 'max' => '2023-12-31',
+        // 'disabled' => 'disabled'
+        // 'readonly' => 'readonly'
         'required' => 'required'
     ],
     'field' => 'expira_em',
     'default' => FORM_DEFAULT['expirydate'],
     'html_escape' => true,
     'escape' => true,
-    'Message_required_field' => 'Campo E-mail Obrigatório',
+    'Message_required_field' => 'Campo Expira Em Obrigatório',
     'with_set' => true
 ];
 ?>

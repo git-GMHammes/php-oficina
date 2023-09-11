@@ -100,6 +100,38 @@ $garantia = [
         // 'readonly' => 'readonly'
     ]
 ];
+$data_entrada_label = [
+    'label_text' => 'Data de Entrada',
+    'id' => 'data_entrada',
+    'attributes' => [
+        'class' => 'form-label label-left'
+    ]
+];
+$data_entrada = [
+    'data' => [
+        'type' => 'date',
+        // 'type' => 'text',
+        // 'type' => 'hidden',
+        // 'type' => 'email',
+        // 'type' => 'number',
+        'name' => 'data_entrada',
+        'id' => 'data_entrada',
+        'class' => 'form-control form-control-sm',
+        'maxlength' => '100',
+        'placeholder' => 'Data de Entrada',
+        // 'min' => date('Y-m-d'),
+        // 'max' => '2023-12-31',
+        // 'disabled' => 'disabled'
+        // 'readonly' => 'readonly'
+        'required' => 'required'
+    ],
+    'field' => 'data_entrada',
+    'default' => date('Y-m-d'),
+    'html_escape' => true,
+    'escape' => true,
+    'Message_required_field' => 'Campo Data de Entrada Obrigatório',
+    'with_set' => true
+];
 $data_inicio_os_label = [
     'label_text' => 'Data Inicio',
     'id' => 'data_inicio_os',
@@ -132,7 +164,7 @@ $data_inicio_os = [
     'with_set' => true
 ];
 $data_fim_os_label = [
-    'label_text' => 'Data Fim',
+    'label_text' => 'Data do fim',
     'id' => 'data_fim_os',
     'attributes' => [
         'class' => 'form-label label-left'
@@ -149,17 +181,50 @@ $data_fim_os = [
         'id' => 'data_fim_os',
         'class' => 'form-control form-control-sm',
         'maxlength' => '100',
-        'placeholder' => 'Data Fim',
-        'min' => date('Y-m-d'),
+        'placeholder' => 'Data do fim',
+        // 'min' => date('Y-m-d'),
         // 'max' => '2023-12-31',
         // 'disabled' => 'disabled'
+        // 'readonly' => 'readonly'
         'required' => 'required'
     ],
     'field' => 'data_fim_os',
     'default' => date('Y-m-d'),
     'html_escape' => true,
     'escape' => true,
-    'Message_required_field' => 'Campo Dados da Garantia Obrigatório',
+    'Message_required_field' => 'Campo Data do fim Obrigatório',
+    'with_set' => true
+];
+$data_saida_label = [
+    'label_text' => 'Data de Saída',
+    'id' => 'data_saida',
+    'attributes' => [
+        'class' => 'form-label label-left'
+    ]
+];
+$data_saida = [
+    'data' => [
+        'type' => 'date',
+        // 'type' => 'text',
+        // 'type' => 'hidden',
+        // 'type' => 'email',
+        // 'type' => 'number',
+        'name' => 'data_saida',
+        'id' => 'data_saida',
+        'class' => 'form-control form-control-sm',
+        'maxlength' => '100',
+        'placeholder' => 'Data de Saída',
+        // 'min' => date('Y-m-d'),
+        // 'max' => '2023-12-31',
+        // 'disabled' => 'disabled'
+        // 'readonly' => 'readonly'
+        'required' => 'required'
+    ],
+    'field' => 'data_saida',
+    'default' => date('Y-m-d'),
+    'html_escape' => true,
+    'escape' => true,
+    'Message_required_field' => 'Campo Data de Saída Obrigatório',
     'with_set' => true
 ];
 $situacao_label = [
@@ -394,21 +459,33 @@ $faturado_nao = [
         </div>
     </div>
 </div>
-<div class="collapse" id="collapseWorkOrder">
-    <div class="row">
-        <div class="col-12 col-sm-6">
-            <div class="mb-12">
-                <?= view('field/form_label', $data_inicio_os_label) ?>
-                <?= view('field/form_input', $data_inicio_os) ?>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6">
-            <div class="mb-12">
-                <?= view('field/form_label', $data_fim_os_label) ?>
-                <?= view('field/form_input', $data_fim_os) ?>
-            </div>
+<div class="row">
+    <div class="col-12 col-sm-3">
+        <div class="mb-12">
+            <?= view('field/form_label', $data_entrada_label) ?>
+            <?= view('field/form_input', $data_entrada) ?>
         </div>
     </div>
+    <div class="col-12 col-sm-3">
+        <div class="mb-12">
+            <?= view('field/form_label', $data_inicio_os_label) ?>
+            <?= view('field/form_input', $data_inicio_os) ?>
+        </div>
+    </div>
+    <div class="col-12 col-sm-3">
+        <div class="mb-12">
+            <?= view('field/form_label', $data_fim_os_label) ?>
+            <?= view('field/form_input', $data_fim_os) ?>
+        </div>
+    </div>
+    <div class="col-12 col-sm-3">
+        <div class="mb-12">
+            <?= view('field/form_label', $data_saida_label) ?>
+            <?= view('field/form_input', $data_saida) ?>
+        </div>
+    </div>
+</div>
+<div class="collapse" id="collapseWorkOrder">
     <div class="row">
         <div class="col-12 col-sm-6">
             <div class="mb-12">

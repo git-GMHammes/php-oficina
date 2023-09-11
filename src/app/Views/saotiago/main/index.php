@@ -6,8 +6,8 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-sm-6 d-flex justify-content-end">
-                    <button type="button" class="btn btn-outline-primary" style="height: 150px; width: 200px; font-size: 18px; padding: 10px 20px; border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#modal_veiculos">
-                        Veículos
+                    <button type="button" class="btn btn-outline-primary" style="height: 150px; width: 200px; font-size: 18px; padding: 10px 20px; border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#modal_os">
+                        Ordem de Serviços
                     </button>
                 </div>
                 <div class="col-12 col-sm-6 d-flex justify-content-start">
@@ -23,12 +23,12 @@
             </div>
             <div class="row">
                 <div class="col-12 col-sm-6 d-flex justify-content-end">
-                    <button type="button" class="btn btn-outline-primary" style="height: 150px; width: 200px; font-size: 18px; padding: 10px 20px; border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#modal_os">
-                        Ordem de Serviços
+                    <button type="button" class="btn btn-outline-primary" style="height: 150px; width: 200px; font-size: 18px; padding: 10px 20px; border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#modal_veiculos">
+                        Veículos
                     </button>
                 </div>
                 <div class="col-12 col-sm-6 d-flex justify-content-start">
-                    <button type="button" class="btn btn-outline-primary" style="height: 150px; width: 200px; font-size: 18px; padding: 10px 20px; border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#modal_os">
+                    <button type="button" class="btn btn-outline-primary" style="height: 150px; width: 200px; font-size: 18px; padding: 10px 20px; border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#modal_vendas">
                         Vendas
                     </button>
                 </div>

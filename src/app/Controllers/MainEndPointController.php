@@ -36,8 +36,9 @@ class MainEndPointController extends ResourceController
         } else {
             $profile = '/unknown';
         }
-        $endPoint = myEndPoint('saotiago/profile/api/read' . $profile, $this->token);
-        // myPrint($endPoint, 'C:\laragon\www\php-oficina\src\app\Controllers\MainEndPointController.php, linha: 40');
+        // myPrint('saotiago/profile/api/read'.$profile, 'C:\laragon\www\php-oficina\src\app\Controllers\MainEndPointController.php, linha: 40', true);
+        $endPoint = myEndPoint('saotiago/profile/api/read' . $profile, '9a87sd89a7sd9a7sd');
+        // myPrint($endPoint, 'C:\laragon\www\php-oficina\src\app\Controllers\MainEndPointController.php, linha: 42');
         $this->menu_profile = (isset($endPoint['result']['menu_profile'])) ? ($endPoint['result']['menu_profile']) : (array());
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
         service('request');
@@ -114,7 +115,7 @@ class MainEndPointController extends ResourceController
             'saotiago/main/index'
         );
         $requestJSONform['menu_profile'] = $this->menu_profile;
-        myPrint($requestJSONform, 'www\php-oficina\src\app\Controllers\MainEndPointController.php');
+        // myPrint($requestJSONform, 'src\app\Controllers\MainEndPointController.php');
         try {
             $apiRespond = [
                 'http' => array(

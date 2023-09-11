@@ -72,9 +72,9 @@ class ProfileApiController extends ResourceController
         } else {
             $parameter = 'unknown';
         };
-        myPrint($parameter, 'src\app\Controllers\ProfileApiController.php, Line 75', true);
+        // myPrint($parameter, 'src\app\Controllers\ProfileApiController.php, Line 75');
         $dbResponse['menu_profile'] = $this->ModelProfileMenu->dBread('id_slug_profile', $parameter)->orderBy('menu_order', 'ASC')->findAll();
-        myPrint($dbResponse['menu_profile'], 'src\app\Controllers\ProfileApiController.php, Line 77', true);
+        // myPrint($dbResponse['menu_profile'], 'src\app\Controllers\ProfileApiController.php, Line 77', true);
         $apiRespond = [
             'http' => array(
                 'header'  => 'Content-type: application/x-www-form-urlencoded',
@@ -85,6 +85,7 @@ class ProfileApiController extends ResourceController
             // 'method' => '__METHOD__',
             // 'function' => '__FUNCTION__',
             'page_title' => 'Listar Perfis do Sistema',
+            // 'result' => DATABASE_CONNECTION_DATA,
             'result' => $dbResponse,
         ];
         try {
@@ -92,7 +93,7 @@ class ProfileApiController extends ResourceController
         } catch (\Exception $e) {
             $apiRespond = array(
                 'message' => array('danger' => $e->getMessage()),
-                'page_title' => 'TITLE PAGE',
+                'page_title' => 'ERRO - Listar Perfis do Sistema',
             );
             $response = $this->response->setJSON($apiRespond, 404);
         }

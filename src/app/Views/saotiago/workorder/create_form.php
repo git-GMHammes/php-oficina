@@ -23,27 +23,32 @@ $submit = [
             Novo Cadasttro
         </div>
         <div class="card-body">
-        <div class="row">
+            <div class="row">
                 <div class="col-12 col-sm-4">
                     <div class="text-start">
                         <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWorkOrder" aria-expanded="false" aria-controls="collapseWorkOrder">
                             <?= view('icon/arrows-expand', ['height' => '15px', 'width' => '15px']); ?>
                         </button>
+                        <a class="btn btn-outline-primary" href="#" role="button">Adicionar Veículo</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Profissionais</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Serviços</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Material</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Ferramentas</a>
                     </div>
                 </div>
                 <div class="col-12 col-sm-4">
                     <h5 class="card-title">Cadastrar Ordem de Servico</h5>
                 </div>
                 <div class="col-12 col-sm-4">
-                    &nbsp;
+                    <div class="text-end">
+                        <a class="btn btn-outline-danger disabled" href="#" role="button">
+                            <span class="tempo"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center">
-                <button onclick="location.reload()" class="btn btn-outline-primary" type="submit">
-                    <div style="font-size: 2rem;">
-                        <span class="tempo"></span>
-                    </div>
-                </button>
+                &nbsp;
             </div>
             <?= view('saotiago/workorder/form_field') ?>
         </div>

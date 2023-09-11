@@ -41,22 +41,20 @@ $submit = [
                     <h5 class="card-title">Cadastrar Produto</h5>
                 </div>
                 <div class="col-12 col-sm-4">
-                    &nbsp;
+                    <div class="text-end">
+                        <a class="btn btn-outline-danger disabled" href="#" role="button">
+                            <span class="tempo"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center">
-                <button onclick="location.reload()" class="btn btn-outline-primary" type="submit">
-                    <div style="font-size: 2rem;">
-                        <span class="tempo"></span>
-                    </div>
-                </button>
-            </div>
-            <?= view('saotiago/equipment/form_field') ?>
+            <button onclick="location.reload()" class="btn btn-outline-primary" type="submit"></button>
         </div>
-        <div class="card-footer text-muted">
-            &emsp;<?= view('field/form_submit', $submit) ?> &emsp;
-            <a class="btn btn-outline-warning" href="<?= base_url() ?>#" role="button">Cancelar</a>
-        </div>
+        <?= view('saotiago/equipment/form_field') ?>
+    </div>
+    <div class="card-footer text-muted">
+        &emsp;<?= view('field/form_submit', $submit) ?> &emsp;
+        <a class="btn btn-outline-warning" href="<?= base_url() ?>#" role="button">Cancelar</a>
     </div>
 </div>
 <?= view('field/form_close', $form_close); ?>

@@ -99,9 +99,13 @@ defined('D2B5A170764157EB93CFCBF66151A70C') or define('D2B5A170764157EB93CFCBF66
 #
 # Modo Debug MyPrint
 # 
-defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', true);
-$currentmonth = date('m');
-$month = $currentmonth + 5;
+defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', false);
+// Obtém a data atual
+$dataAtual = new DateTime(date('Y-m-d'));
+// Adiciona 5 meses à data atual
+$dataAtual->add(new DateInterval('P5M'));
+// Obtém a data resultante formatada como 'Y-m-d'
+$dataResultante = $dataAtual->format('Y-m-d');
 $form_value = [
     'name' => md5(password_hash('name1', PASSWORD_DEFAULT)) . ' ' . md5(password_hash('name2', PASSWORD_DEFAULT)),
     'profile' => 'client',
@@ -121,7 +125,7 @@ $form_value = [
     'cellphone' => '(' . date('s') . ')' . '9' . date('id-iH'),
     'active' => 'Y',
     'registrationdate' => date('Y-m-d'),
-    'expirydate' => date("Y-$month-d"),
+    'expirydate' => $dataResultante,
     'nationalregistrationoflegalentity' => time() . date('is'),
     'stateregistration' => time() . date('s'),
     'site' => 'www.' . md5(password_hash('site', PASSWORD_DEFAULT)) . time() . '.com',
@@ -141,7 +145,7 @@ if (
     $_SERVER['SERVER_NAME'] == 'localhost'
     && $_SERVER["SERVER_PORT"] == '80'
 ) {
-    defined('DATABASE_CONNECTION_DATA') or define('DATABASE_CONNECTION_DATA', "saotiago_localhost");
+    defined('DATABASE_CONNECTION_DATA') or define('DATABASE_CONNECTION_DATA', "saotiago_container");
 } elseif (
     # Ambiente 127.0.0.1
     $_SERVER['SERVER_NAME'] == '127.0.0.1'
