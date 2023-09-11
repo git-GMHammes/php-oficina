@@ -35,8 +35,9 @@ $routes->addRedirect('saothiago', 'saotiago/user/endpoint/authenticate');
 $routes->addRedirect('saotiago', 'saotiago/user/endpoint/authenticate');
 $routes->addRedirect('saotiago/logar', 'saotiago/user/endpoint/authenticate');
 $routes->addRedirect('saotiago/login', 'saotiago/user/endpoint/authenticate');
-
+# 
 $routes->group('saotiago', function ($routes) {
+    $routes->addRedirect('saotiago/main', 'saotiago/main/endpoint/home');
     # www/saotiago/main/segment/(:any)
     $routes->group('main', function ($routes) {
         # www/saotiago/main/api/(:any)
@@ -56,6 +57,7 @@ $routes->group('saotiago', function ($routes) {
             $routes->post('home', 'MainEndPointController::main');
         });
     });
+    $routes->addRedirect('saotiago/user', 'saotiago/user/api/authenticate');
     $routes->group('user', function ($routes) {
         $routes->group('api', function ($routes) {
             # www/saotiago/user/api/authenticate(:any)
@@ -87,6 +89,7 @@ $routes->group('saotiago', function ($routes) {
             $routes->post('access', 'UserEndPointController::access');
         });
     });
+    $routes->addRedirect('saotiago/profile', 'saotiago/main/endpoint/home');
     $routes->group('profile', function ($routes) {
         $routes->group('api', function ($routes) {
             # www/saotiago/profile/api/read(:any)
@@ -103,6 +106,8 @@ $routes->group('saotiago', function ($routes) {
             $routes->post('__', 'Controller::Method');
         });
     });
+    $routes->addRedirect('saotiago/customer', 'saotiago/main/endpoint/home');
+    $routes->addRedirect('saotiago/cliente', 'saotiago/main/endpoint/home');
     $routes->group('customer', function ($routes) {
         $routes->group('api', function ($routes) {
             # www/saotiago/customer/api/create(:any)
@@ -127,6 +132,12 @@ $routes->group('saotiago', function ($routes) {
             $routes->get('__/(:segment)', 'Controller::Method/$1');
             $routes->get('__/(:any)', 'Controller::Method/$1');
             $routes->post('__', 'Controller::Method');
+            # www/saotiago/emitente/api/create(:any)
+            $routes->get('create', 'EmitenteApiController::create');
+            $routes->get('create/(:segment)', 'EmitenteApiController::create/$1');
+            $routes->get('create/(:any)', 'EmitenteApiController::create/$1');
+            $routes->post('create', 'EmitenteApiController::create');
+            $routes->post('create/(:segment)', 'EmitenteApiController::create/$1');
         });
         $routes->group('endpoint', function ($routes) {
             # www/saotiago/emitente/endpoint/create(:any)
@@ -134,6 +145,7 @@ $routes->group('saotiago', function ($routes) {
             $routes->get('create/(:segment)', 'EmitenteEndPointController::create/$1');
             $routes->get('create/(:any)', 'EmitenteEndPointController::create/$1');
             $routes->post('create', 'EmitenteEndPointController::create');
+            $routes->post('create/(:segment)', 'EmitenteEndPointController::create/$1');
         });
     });
     $routes->group('car', function ($routes) {

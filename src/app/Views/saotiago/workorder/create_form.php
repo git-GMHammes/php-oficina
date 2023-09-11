@@ -29,10 +29,10 @@ $submit = [
                         <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWorkOrder" aria-expanded="false" aria-controls="collapseWorkOrder">
                             <?= view('icon/arrows-expand', ['height' => '15px', 'width' => '15px']); ?>
                         </button>
-                        <a class="btn btn-outline-primary" href="#" role="button">Adicionar Veículo</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Vincular Veículo</a>
                         <a class="btn btn-outline-primary" href="#" role="button">Profissionais</a>
                         <a class="btn btn-outline-primary" href="#" role="button">Serviços</a>
-                        <a class="btn btn-outline-primary" href="#" role="button">Material</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Materiais</a>
                         <a class="btn btn-outline-primary" href="#" role="button">Ferramentas</a>
                     </div>
                 </div>

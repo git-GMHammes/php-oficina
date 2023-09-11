@@ -70,7 +70,6 @@ class CustomerApiController extends ResourceController
         }
         if ($parameter == $receiveToken) {
             return true;
-            exit('---------------------');
         } else {
             return false;
         }

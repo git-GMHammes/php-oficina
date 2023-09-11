@@ -31,7 +31,7 @@ $submit = [
                         </button>
                         <a class="btn btn-outline-primary" href="#" role="button">Ordens de Serviço</a>
                         <a class="btn btn-outline-primary" href="#" role="button">Listar Veículos</a>
-                        <a class="btn btn-outline-primary" href="#" role="button">Novo Veículo</a>
+                        <a class="btn btn-outline-primary" href="#" role="button">Vincular Veículo</a>
                     </div>
                 </div>
                 <div class="col-12 col-sm-4">
