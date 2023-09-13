@@ -1,26 +1,27 @@
 <?php
+
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-// use App\Models\NomeModel;
+use App\Models\CarModel;
 use Exception;
 
 class NomeController extends ResourceController
 {
     use ResponseTrait;
-    private $ModelResponse;
+    private $ModelCar;
     private $uri;
 
     public function __construct()
     {
-        // $this->ModelResponse = new NomeModel();
+        $this->ModelCar = new CarModel();
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
         helper([
-        'myPrint',
-        //'myDate',
-        //'myIdUFF',
-        'myFake'
+            'myPrint',
+            //'myDate',
+            //'myIdUFF',
+            'myFake'
         ]);
         return NULL;
     }
@@ -31,6 +32,27 @@ class NomeController extends ResourceController
     # retorno do controller [JSON]
     public function index($parameter = NULL)
     {
+        set_time_limit(1200);
+        for ($i = 0; $i < 1; $i++) {
+            $data = [
+                'odometer' => myFakeNumberAddress(),
+                'car_description' => '',
+                'license_plate' => myCarPlate(),
+                'manufacturer' => '',
+                'manufacturing_year' => myFakeYear(),
+                'model' => '',
+                'model_year' => '',
+                'color' => 'Prata',
+                'chassis' => myFakeNumberAddress() . myFakeNumberAddress(),
+                'city' => myFakeAddressDistrict(),
+                'state' => 'Rio de Janeiro',
+                'situation' => 'RJ',
+                'created_at' => date('Y-m-d'),
+                'updated_at' => date('Y-m-d'),
+                'deleted_at' => date('Y-m-d'),
+            ];
+            $this->ModelCar->dbCreate($data);
+        }
         try {
             $apiRespond = [
                 'http' => array(
@@ -55,5 +77,4 @@ class NomeController extends ResourceController
         }
         return $response;
     }
-
 }
