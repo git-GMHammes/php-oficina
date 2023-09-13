@@ -20,16 +20,38 @@ class CarManufacturerApiController extends ResourceController
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
         helper([
             'myPrint',
+            'myFake',
         ]);
         return NULL;
     }
 
-    # route POST /www/saotiago/manufacturer/api/index/(:any)
-    # route GET /www/saotiago/manufacturer/api/index/(:any)
+    # route POST /www/saotiago/manufacturer/api/fake(:any)
+    # route GET /www/saotiago/manufacturer/api/fake(:any)
     # Informação sobre o controller
     # retorno do controller [JSON]
     public function index($parameter = NULL)
     {
+        set_time_limit(1200);
+        for ($i = 0; $i < 1; $i++) {
+            $data = [
+                'odometer' => myFakeNumberAddress(),
+                'car_description' => '',
+                'license_plate' => myCarPlate(),
+                'manufacturer' => '',
+                'manufacturing_year' => myFakeYear(),
+                'model' => '',
+                'model_year' => '',
+                'color' => 'Prata',
+                'chassis' => myFakeNumberAddress() . myFakeNumberAddress(),
+                'city' => myFakeAddressDistrict(),
+                'state' => 'Rio de Janeiro',
+                'situation' => 'RJ',
+                'created_at' => date('Y-m-d'),
+                'updated_at' => date('Y-m-d'),
+                'deleted_at' => date('Y-m-d'),
+            ];
+            $this->ModelCarManufacturer->dbCreate($data);
+        }
         try {
             $apiRespond = [
                 'http' => array(

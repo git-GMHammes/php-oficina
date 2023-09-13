@@ -35,6 +35,38 @@ class CustomerApiController extends ResourceController
     # retorno do controller [JSON]
     public function index($parameter = NULL)
     {
+        set_time_limit(1200);
+        for ($i = 0; $i < 1000; $i++) {
+            $name1 = myFakeNameFull();
+            $name2 = myFakeNameFull();
+            $data = [
+                'profile_id_slug' => 'client',
+                'classification' => 'client',
+                'name' => $name1,
+                'gender' => myFakeGenderFirst(),
+                'rg' => time(),
+                'cpf' => myFakeCPFrandom(),
+                'zip_code' => myFakeAddressZipCode(),
+                'street' => myFakeAddress($name1),
+                'number' => myFakeNumberAddress(),
+                'neighborhood' => myFakeAddressDistrict(),
+                'city' => 'Rio de Janeiro',
+                'state' => 'RJ',
+                'mail' => myFakeMail($name1),
+                'password' => strtoupper(md5(password_hash(time(), PASSWORD_DEFAULT))),
+                'phone' => myFakePhone(),
+                'cellphone' => myFakeCellPhone(),
+                'asset' => 'Y',
+                'registrationDate' => myFakeDate(),
+                'expirationDate' => myFakeDate(),
+                'contact' => $name2,
+                'created_at' => date('Y-m-d'),
+                'updated_at' => date('Y-m-d'),
+                'deleted_at' => date('Y-m-d'),
+            ];
+            $this->ModelCustomer->dbCreate($data);
+        }
+
         try {
             $apiRespond = [
                 'http' => array(

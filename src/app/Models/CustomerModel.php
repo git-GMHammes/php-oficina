@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class CustomerModel extends Model
 {
-    protected $DBGroup = 'saotiago_localhost';
+    protected $DBGroup = DATABASE_CONNECTION_DATA;
     protected $table = 'user_customer_emitente';
     protected $primaryKey = 'id_user_customer_emitente';
     protected $returnType = 'array';
@@ -27,11 +27,10 @@ class CustomerModel extends Model
         'password',
         'phone',
         'cellphone',
-        'contact',
-        'registrationDate',
         'asset',
         'registrationDate',
         'expirationDate',
+        'contact',
         'created_at',
         'updated_at',
         'deleted_at',

@@ -110,6 +110,12 @@ $routes->group('saotiago', function ($routes) {
     $routes->addRedirect('saotiago/cliente', 'saotiago/main/endpoint/home');
     $routes->group('customer', function ($routes) {
         $routes->group('api', function ($routes) {
+            # www/saotiago/customer/api/fake(:any)
+            $routes->get('fake', 'CustomerApiController::index');
+            $routes->get('fake/(:segment)', 'CustomerApiController::index/$1');
+            $routes->get('fake/(:any)', 'CustomerApiController::index/$1');
+            $routes->post('fake', 'CustomerApiController::index');
+            $routes->post('fake/(:segment)', 'CustomerApiController::index/$1');
             # www/saotiago/customer/api/create(:any)
             $routes->get('create', 'CustomerApiController::create');
             $routes->get('create/(:segment)', 'CustomerApiController::create/$1');
@@ -132,6 +138,12 @@ $routes->group('saotiago', function ($routes) {
             $routes->get('__/(:segment)', 'Controller::Method/$1');
             $routes->get('__/(:any)', 'Controller::Method/$1');
             $routes->post('__', 'Controller::Method');
+            # www/saotiago/emitente/api/fake(:any)
+            $routes->get('fake', 'EmitenteApiController::index');
+            $routes->get('fake/(:segment)', 'EmitenteApiController::index/$1');
+            $routes->get('fake/(:any)', 'EmitenteApiController::index/$1');
+            $routes->post('fake', 'EmitenteApiController::index');
+            $routes->post('fake/(:segment)', 'EmitenteApiController::index/$1');
             # www/saotiago/emitente/api/create(:any)
             $routes->get('create', 'EmitenteApiController::create');
             $routes->get('create/(:segment)', 'EmitenteApiController::create/$1');
@@ -166,6 +178,12 @@ $routes->group('saotiago', function ($routes) {
     });
     $routes->group('manufacturer', function ($routes) {
         $routes->group('api', function ($routes) {
+            # www/saotiago/manufacturer/api/fake(:any)
+            $routes->get('fake', 'CarManufacturerApiController::index');
+            $routes->get('fake/(:segment)', 'CarManufacturerApiController::index/$1');
+            $routes->get('fake/(:any)', 'CarManufacturerApiController::index/$1');
+            $routes->post('fake', 'CarManufacturerApiController::index');
+            $routes->post('fake/(:segment)', 'CarManufacturerApiController::index/$1');
             # www/saotiago/manufacturer/api/read/(:any)
             $routes->get('read', 'CarManufacturerApiController::read');
             $routes->get('read/(:segment)', 'CarManufacturerApiController::read/$1');
