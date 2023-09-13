@@ -167,6 +167,13 @@ $routes->group('saotiago', function ($routes) {
             $routes->get('__/(:segment)', 'CarAPIController::Method/$1');
             $routes->get('__/(:any)', 'CarAPIController::Method/$1');
             $routes->post('__', 'CarAPIController::Method');
+            $routes->post('__/(:segment)', 'CarAPIController::Method/$1');
+            # www/saotiago/cars/api/fake(:any)
+            $routes->get('fake', 'CarAPIController::index');
+            $routes->get('fake/(:segment)', 'CarAPIController::index/$1');
+            $routes->get('fake/(:any)', 'CarAPIController::index/$1');
+            $routes->post('fake', 'CarAPIController::index');
+            $routes->post('fake/(:segment)', 'CarAPIController::index/$1');
         });
         $routes->group('endpoint', function ($routes) {
             # www/saotiago/cars/endpoint/create(:any)

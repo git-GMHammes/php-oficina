@@ -7,7 +7,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\CarModel;
 use Exception;
 
-class NomeController extends ResourceController
+class CarApiController extends ResourceController
 {
     use ResponseTrait;
     private $ModelCar;
@@ -26,8 +26,8 @@ class NomeController extends ResourceController
         return NULL;
     }
 
-    # route POST /www/sigla/rota
-    # route GET /www/sigla/rota
+    # route POST /www/saotiago/cars/api/fake(:any)
+    # route GET /www/saotiago/cars/api/fake(:any)
     # Informação sobre o controller
     # retorno do controller [JSON]
     public function index($parameter = NULL)
