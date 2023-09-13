@@ -16,12 +16,12 @@ class NomeController extends ResourceController
     {
         // $this->ModelResponse = new NomeModel();
         $this->uri = new \CodeIgniter\HTTP\URI(current_url());
-        // helper([
-        //'myPrint',
+        helper([
+        'myPrint',
         //'myDate',
         //'myIdUFF',
-        //'myFake'
-        // ]);
+        'myFake'
+        ]);
         return NULL;
     }
 
