@@ -28,6 +28,8 @@ RUN a2enmod rewrite
 # Define o nome do servidor para suprimir avisos
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+# Define o diretório de trabalho como /var/www/html/oficina
+WORKDIR /var/www/html/oficina
 # Copia o app e altera permissões
 COPY ./src /var/www/html/oficina
 

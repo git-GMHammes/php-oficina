@@ -99,7 +99,7 @@ defined('D2B5A170764157EB93CFCBF66151A70C') or define('D2B5A170764157EB93CFCBF66
 #
 # Modo Debug MyPrint
 # 
-defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', false);
+defined('DEBUG_MY_PRINT') or define('DEBUG_MY_PRINT', true);
 // Obtém a data atual
 $dataAtual = new DateTime(date('Y-m-d'));
 // Adiciona 5 meses à data atual

@@ -18,6 +18,7 @@ class Filters extends BaseConfig
     public array $aliases = [
         'jwt' => \App\Filters\JwtFilter::class,
         'jwtcookie' => \App\Filters\JwtCookieFilter::class,
+        'profilemenu' => \App\Filters\ProfileMenuFilter::class,
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
@@ -67,7 +68,7 @@ class Filters extends BaseConfig
     public array $filters = [
         'jwt' => ['before' => [
             // 'saotiago/profile/api/read',
-            'filter',
+            'none'
         ]],
         'jwtcookie' => ['before' => [
             // 'saotiago/service/endpoint/create_os',
@@ -79,7 +80,11 @@ class Filters extends BaseConfig
             // 'saotiago/user/endpoint/create',
             // 'saotiago/car/endpoint/create',
             // 'saotiago/user/endpoint/access',
-            'filter',
+            'none'
+        ]],
+        'profilemenu' => ['before' => [
+            'saotiago/*',
+            // 'none'
         ]]
     ];
 }

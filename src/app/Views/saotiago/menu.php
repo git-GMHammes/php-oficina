@@ -1,10 +1,13 @@
 <?php
 (DEBUG_MY_PRINT) ? (myPrint('www\oficina\app\Views\saotiago\menu.php', 'Line: 2', true)) : (NULL);
-if (session()->get('logSystem')) {
-    $apiSession = session()->get('logSystem');
+if (session()->get('profileMenu')) {
+    $foreach_menu = session()->get('profileMenu');
+    //  myPrint($profileMenu, '');
+} else {
+    $foreach_menu = session()->get('profileMenu');
 }
-$foreach_menu = (isset($result['menu_profile'])) ? ($result['menu_profile']) : (array());
-$define = array();
+// $foreach_menu = (isset($result['menu_profile'])) ? ($result['menu_profile']) : (array());
+// $foreach_menu = (isset($result['menu_profile'])) ? ($result['menu_profile']) : (array());
 $count = 0;
 // myPrint($foreach_menu, 'app\Views\saotiago\menu.php, 8', true);
 if ($foreach_menu !== array()) {
@@ -27,9 +30,6 @@ if ($foreach_menu !== array()) {
 $menu_main = (isset($menu_main)) ? ($menu_main) : (array());
 $menu_sub = (isset($menu_sub[0])) ? ($menu_sub[0]) : (array());
 $menu_dif = array_diff($menu_main, $menu_sub);
-// myPrint($menu_main, '', true);
-// myPrint($menu_sub, '', true);
-// myPrint($menu_dif, '');
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">

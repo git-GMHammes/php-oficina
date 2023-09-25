@@ -93,5 +93,13 @@ class Autoload extends AutoloadConfig
      * @var string[]
      * @phpstan-var list<string>
      */
-    public $helpers = ['myPrint', 'filesystem', 'form', 'cookie'];
+    public $helpers = [
+        'myPrint',
+        'filesystem',
+        'form',
+        'cookie',
+        'myCookie',
+        'myEndPoint',
+        'myPrint',
+    ];
 }

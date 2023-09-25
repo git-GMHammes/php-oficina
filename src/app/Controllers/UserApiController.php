@@ -206,13 +206,6 @@ class UserApiController extends ResourceController
     # retorno do controller [JSON]
     public function authenticate($parameter = NULL)
     {
-        $dbResponse = "ERRO";
-        require_once(APPPATH . 'Libraries/JWT/src/BeforeValidException.php');
-        require_once(APPPATH . 'Libraries/JWT/src/ExpiredException.php');
-        require_once(APPPATH . 'Libraries/JWT/src/SignatureInvalidException.php');
-        require_once(APPPATH . 'Libraries/JWT/src/JWT.php');
-        $key = D2B5A170764157EB93CFCBF66151A70C; // Lembre-se de manter esta chave segura!
-        $shelf_life = time() + (10 * 60 * 60); // 10 horas
         $request = service('request');
         $processRequest = (array)$request->getVar();
         myPrint($processRequest, 'src\app\Controllers\UserApiController.php', true);
@@ -220,43 +213,15 @@ class UserApiController extends ResourceController
             unset($processRequest['enviar']);
         }
         try {
+            jwtCookie();
             $logSystem = [
                 'user' => 'gmhammes',
                 'profile' => 'su',
+                // 'profile' => 'unknown',
                 'token' => strtoupper(md5(time())),
             ];
             session()->set('logSystem',  $logSystem);
             session()->markAsTempdata('logSystem', 28800);
-
-            $token = array(
-                "iss" => $_SERVER['REQUEST_SCHEME'] . $_SERVER['SERVER_NAME'],
-                "aud" => $_SERVER['REQUEST_SCHEME'] . $_SERVER['SERVER_NAME'],
-                "iat" => 1356999524,
-                "nbf" => 1357000000,
-                "data" => array(
-                    "userId" => $logSystem['user'], // Id do usuário
-                    "userEmail" => $logSystem['profile'] // Email do usuário ou qualquer outro dado que você queira incluir
-                )
-            );
-            $header = [
-                "alg" => "HS256",
-                "typ" => "JWT",
-                "kid" => "key1" // Adicione o kid ao cabeçalho
-            ];
-            $jwt = \Firebase\JWT\JWT::encode($token, $key, 'HS256', null, $header);
-            myPrint($jwt, 'www\ci431\app\Controllers\FunarjEditalGTCController.php, Line: 240', true);
-            // Definindo o cookie
-            setcookie('token', $jwt, [
-                'expires' => $shelf_life,
-                'path' => '/',
-                'secure' => true, // cookies serão enviados apenas através de conexões seguras
-                'httponly' => true, // cookies não serão acessíveis através de scripts do lado do cliente
-                'samesite' => 'None' // os cookies serão enviados com requisições cross-site
-            ]);
-
-            session()->set('informa_frase',  $frase);
-            session()->markAsTempdata('informa_frase', 5);
-
             $apiRespond = [
                 'http' => array(
                     'header'  => 'Content-type: application/x-www-form-urlencoded',
@@ -267,7 +232,7 @@ class UserApiController extends ResourceController
                 // 'method' => '__METHOD__',
                 // 'function' => '__FUNCTION__',
                 'page_title' => 'Authenticate',
-                'result' => $apiSession,
+                'result' => NULL,
             ];
             if ($parameter == 'json') {
                 $response = $this->response->setJSON($apiRespond, 201);
@@ -286,14 +251,6 @@ class UserApiController extends ResourceController
             }
         }
         $this->returnFunction(['Login realizado com sucesso'], 'success', []);
-        if (session()->get('logSystem')) {
-            $apiSession = session()->get('logSystem');
-            // myPrint($apiSession, 'app\Controllers\UserApiController.php, 164', true);
-        }
-        if (session()->get('message')) {
-            $message = session()->get('message');
-            // myPrint($message, 'app\Controllers\UserApiController.php, 164');
-        }
         if ($parameter !== 'json') {
             return redirect()->to('saotiago/main/endpoint/home');
         } else {
