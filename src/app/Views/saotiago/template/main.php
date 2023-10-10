@@ -6,17 +6,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- /public/assets/vendor/leaflet/leaflet.js -->
+    <!-- Mapas -->
     <script src="<?= base_url() . "assets/leaflet/leaflet.js"; ?>"></script>
     <!-- jQuery -->
-    <!-- /public/assets/vendor/jquery/jquery-3.6.2.min.js -->
     <script src="<?= base_url() . 'assets/jquery/jquery-3.6.2.min.js' ?>"></script>
+    <!-- /public/assets/vendor/jquery/jquery-3.6.2.min.js -->
     <!-- dataTables -->
     <!-- local/public/assets/dataTables/jquery.dataTables.min.css -->
-    <!-- local/public/assets/dataTables/jquery.dataTables.min.js -->
+    <!-- dataTables -->
     <link rel="stylesheet" href="<?= base_url() . "assets/dataTables/jquery.dataTables.min.css" ?>" />
     <script src="<?= base_url() . "assets/dataTables/jquery.dataTables.min.js" ?>"></script>
     <!-- <link rel="stylesheet" href="<?php base_url() . "assets/dataTables/dataTables.bootstrap5.min.css" ?>"></script> -->
+    
     <!-- <script src="<?php base_url() . "assets/dataTables/dataTables.bootstrap5.min.js" ?>"></script> -->
     <!-- <script src="<?php base_url() . "assets/dataTables/buttons.bootstrap5.min.js" ?>"></script> -->
     <!-- <script src="<?php base_url() . "assets/dataTables/dataTables.buttons.min.js" ?>"></script> -->
