@@ -12,7 +12,7 @@ class UserApiController extends ResourceController
     use ResponseTrait;
 
     protected $modelName = 'App\Models\UsersModel';
-    protected $format = 'json';
+    protected $format = 'json'; 
     private $ModelCustomers;
     private $ModelUser;
     private $uri;
